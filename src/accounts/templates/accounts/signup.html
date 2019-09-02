@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% load crispy_forms_tags %}
+{% block title %}SignUp{% endblock title %}
+{% block content %}
+<div class="section section-white section-signup">
+    <div class="static-image">
+        <div class="image"
+            style="background-image: url('../static/img/header-4.jpeg')">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-3 text-center">
+                    <h2 class="text-white">Sign up</h2>
+
+                    <div class="separator separator-danger">✻</div>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{form|crispy}}
+                        </div>
+                        <p>
+                            By signing up you agree to
+                            <a href="#">
+                                <span class="text-danger">
+                                    Terms of Service
+                                </span>
+                            </a> and
+                            <a href="#">
+                                <span class="text-danger" >
+                                    Privacy Policy
+                                </span>
+                            </a>
+                        </p>
+                        <div class="button-signin">
+                            <button class="btn btn-danger btn-round btn-fill btn-wd" type="submit">
+                                Sign Up
+                            </button>
+                        </div>
+                        <p>
+                            Or use an existing <a href="{% url 'accounts:login' %}" class="text-danger">account</a>.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
